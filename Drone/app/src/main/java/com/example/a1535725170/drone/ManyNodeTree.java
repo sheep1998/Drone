@@ -13,6 +13,7 @@ public class ManyNodeTree {
 
     public ManyNodeTree(){
         root = new ManyTreeNode("root");
+        root.setHasBeenBuild(true);
         tmp = root;
         floor=0;
     }
@@ -25,8 +26,16 @@ public class ManyNodeTree {
         this.tmp.addChild(manyTreeNode);
     }
 
+    public int childNumber(){
+        return this.tmp.getChildList().size();
+    }
+
     public void deleteChild(int n){
         this.tmp.getChildList().remove(n);
+    }
+
+    public ManyTreeNode getTmp(){
+        return this.tmp;
     }
 
     public void beChild(int n){
@@ -50,9 +59,19 @@ public class ManyNodeTree {
         buffer.append("\n");
         if(manyTreeNode!=null){
             for(ManyTreeNode index : manyTreeNode.getChildList()){
-                buffer.append(index.getText()+",");
+                /*buffer.append(index.getText()+",");
                 if(index.getChildList()!=null && index.getChildList().size()>0){
                     buffer.append(iteratorTree(index));
+                }*/
+                if(index.getRadio()!=null){
+                    for(int i = 0;i<index.getFloor();i++){
+                        buffer.append("  ");
+                    }
+                    buffer.append(index.getText());
+                    if(index.getChildList()!=null && index.getChildList().size()>0){
+                        buffer.append(iteratorTree(index));
+                    }
+                    buffer.append("\n");
                 }
             }
         }

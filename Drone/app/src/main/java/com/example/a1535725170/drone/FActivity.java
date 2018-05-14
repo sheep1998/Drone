@@ -13,12 +13,15 @@ import android.widget.Button;
 
 public class FActivity extends Activity{
     private Button bt1;
+
+    private Button bt3;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.factivity);
         bt1=(Button)findViewById(R.id.major_screen_to_programming);
 
+        bt3=(Button)findViewById(R.id.qt);
         //给bt1注册一个点击事件
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +31,13 @@ public class FActivity extends Activity{
                 //实现跳转
                 startActivity(intent);
 
+            }
+        });
+        bt3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 }
